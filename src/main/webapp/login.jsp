@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,18 +8,35 @@
 </head>
 <body>
 <div class="container is-flex is-justify-content-center">
-    <form action="/login.jsp" style="margin-top: 40vh;">
+    <form method="POST" action="login.jsp" style="margin-top: 40vh;">
         <%@include file="partials/login-form.html"%>
     </form>
 </div>
-<%
-    if (request.getHeader("username") != null && request.getHeader("password") != null) {
-        String username = request.getHeader("username");
-        String password = request.getHeader("password");
-        if (username.equals("admin") && password.equals("password")) {
-            response.sendRedirect("/profile.jsp");
-        }
-    }
-%>
+
+<p>Username: ${param.username}</p>
+<p>Password: ${param.password}</p>
+
+<c:choose>
+    <c:when test="${param.username.equals('admin') && param.password.equals('password')}">
+        <% response.sendRedirect("/profile.jsp"); %>
+    </c:when>
+    <c:otherwise>
+        <c:if test="${param.username != null && param.password != null}">
+            <% response.sendRedirect("/login.jsp"); %>
+        </c:if>
+    </c:otherwise>
+</c:choose>
+
+<%--<%--%>
+<%--    if (request.getMethod().equalsIgnoreCase("POST")) {--%>
+<%--        String username = request.getHeader("username");--%>
+<%--        String password = request.getHeader("password");--%>
+<%--        if (username.equals("admin") && password.equals("password")) {--%>
+<%--            response.sendRedirect("/profile.jsp");--%>
+<%--        } else {--%>
+<%--            response.sendRedirect("/login.jsp");--%>
+<%--        }--%>
+<%--    }--%>
+<%--%>--%>
 </body>
 </html>
