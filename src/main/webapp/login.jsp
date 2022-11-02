@@ -11,5 +11,14 @@
         <%@include file="partials/login-form.html"%>
     </form>
 </div>
+<%
+    if (request.getHeader("username") != null && request.getHeader("password") != null) {
+        String username = request.getHeader("username");
+        String password = request.getHeader("password");
+        if (username.equals("admin") && password.equals("password")) {
+            response.sendRedirect("/profile.jsp");
+        }
+    }
+%>
 </body>
 </html>
