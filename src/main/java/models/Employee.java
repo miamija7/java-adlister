@@ -1,8 +1,9 @@
 package models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Employee {
+public class Employee implements Serializable {
     // Variables
     private long id;
     private String firstName;
@@ -12,6 +13,12 @@ public class Employee {
 
     // Constructors
     public Employee(){};
+    public Employee(long id, String firstName, String lastName, char gender){
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+    }
     public Employee(long id, String firstName, String lastName, char gender, List<Pet> patients){
         this.id = id;
         this.firstName = firstName;

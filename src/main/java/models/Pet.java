@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Pet {
     // Variables
+    private long id;
     private String breed;
     private String name;
     private Date birthdate;
@@ -13,7 +14,8 @@ public class Pet {
 
     // Constrictors
     public Pet(){};
-    public Pet(String breed, String name, Date birthdate, List<String> vaccinations, Employee vet) {
+    public Pet(long id, String breed, String name, Date birthdate, List<String> vaccinations, Employee vet) {
+        this.id = id;
         this.breed = breed;
         this.name = name;
         this.birthdate = birthdate;
@@ -22,6 +24,14 @@ public class Pet {
     }
 
     // Methods
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getBreed() {
         return breed;
     }
