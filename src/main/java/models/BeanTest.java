@@ -25,7 +25,11 @@ public class BeanTest {
 
         for(Quote q : quotes){
             System.out.println(q.getContent() + "\n- " + q.getAuthor().getFirst_name() + " " + q.getAuthor().getLast_name() + "\n");
+            q.getAuthor().getQuotes().add(q);
         }
 
+        for(Quote q : adams.getQuotes()){
+            System.out.println(adams.getName() + " once said: " + q.getContent());
+        }
     }
 }

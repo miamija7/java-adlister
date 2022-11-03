@@ -15,6 +15,7 @@ public class Quote implements Serializable {
         this.author = author;
         this.content = content;
     }
+
     // Methods
     public int getId() {
         return id;
