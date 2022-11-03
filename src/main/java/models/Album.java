@@ -9,12 +9,12 @@ public class Album implements Serializable {
     private String artist;
     private String name;
     private Date release_date;
-    private float sales;
+    private double sales;
     private String genre;
 
     // Constructors
     public Album(){};
-    public Album(long id, String artist, String name, Date release_date, float sales, String genre) {
+    public Album(long id, String artist, String name, Date release_date, double sales, String genre) {
         this.id = id;
         this.artist = artist;
         this.name = name;
@@ -56,7 +56,7 @@ public class Album implements Serializable {
         this.release_date = release_date;
     }
 
-    public float getSales() {
+    public double getSales() {
         return sales;
     }
 
