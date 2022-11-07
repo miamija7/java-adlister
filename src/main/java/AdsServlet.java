@@ -6,18 +6,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class AdsServlet {
-    @WebServlet("/products")
-    public class ShowProductsServlet extends HttpServlet {
-        @Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-            // Use the factory to get the dao object
-            Ads adsDao = DaoFactory.getAdsDao();
-            // Use a method on the dao to get all the products
-            List<Ad> ads = adsDao.all();
-            // Pass the data to the jsp
-            req.setAttribute("ads", ads);
-            req.getRequestDispatcher("/ads/index.jsp").forward(req, res);
-        }
+@WebServlet("/ads")
+public class AdsServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        // Use the factory to get the dao object
+        Ads adsDao = DaoFactory.getAdsDao();
+        // Use a method on the dao to get all the products
+        List<Ad> ads = adsDao.all();
+        // Pass the data to the jsp
+        req.setAttribute("ads", ads);
+        req.getRequestDispatcher("/ads/index.jsp").forward(req, res);
     }
 }
+
